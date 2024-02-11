@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "rootDir": ".",
+    "outDir": "dist",
+    "module": "NodeNext",
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule":true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": false,
+    "strict": true,
+    "noEmit": true,
+    "noImplicitAny": true,
+    "useUnknownInCatchVariables": false,
+    "inlineSourceMap": true,
+    "paths": {"*": ["*"]}
+  },
+  "include": ["src/**/*", "src/utils/users.json"],
+  "lib": ["es6"]
+}
