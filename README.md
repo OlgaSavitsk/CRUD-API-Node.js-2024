@@ -2,6 +2,10 @@
 
 ## Setup
 
+- Clone this repo: $ git clone https://github.com/OlgaSavitsk/CRUD-API-Node.js-2024
+- Go to downloaded folder: $ cd CRUD-API-Node.js-2024
+- Go to branch: $ git checkout feature/crud-api
+- Install dependencies: $ npm install
 - development mode: $ npm run start:dev
 - production mode: $ npm run start:prod
 

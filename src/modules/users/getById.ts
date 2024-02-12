@@ -11,18 +11,18 @@ import { HTTP_STATUS } from "../../utils/constants";
 async function handler(ctx: AppContext) {
   const id = ctx.req.url.split("/")[3];
   try {
-    if (!validate(id)) {
-      ctx.res.statusCode = HTTP_STATUS.BAD_REQUEST;
-      ctx.body = JSON.stringify({ message: "ID must be in uuid format" });
-    }
-    const user = await findById(id);
-
-    if (!user) {
-      ctx.body = JSON.stringify({ message: "User Not Found" });
-      ctx.res.statusCode = HTTP_STATUS.NOT_FOUND;
+    if (validate(id)) {
+      const user = await findById(id);
+      if (!user) {
+        ctx.body = JSON.stringify({ message: "User Not Found" });
+        ctx.res.statusCode = HTTP_STATUS.NOT_FOUND;
+      } else {
+        ctx.body = JSON.stringify(user);
+        ctx.res.statusCode = HTTP_STATUS.OK;
+      }
     } else {
-      ctx.body = JSON.stringify(user);
-      ctx.res.statusCode = HTTP_STATUS.OK;
+      ctx.body = JSON.stringify({ message: "ID must be in uuid format" });
+      ctx.res.statusCode = HTTP_STATUS.BAD_REQUEST;
     }
   } catch (error) {
     ctx.body = JSON.stringify({ message: "Server Error" });

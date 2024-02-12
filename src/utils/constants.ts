@@ -2,5 +2,7 @@ export enum HTTP_STATUS {
     OK = 200,
     NOT_FOUND = 404,
     INTERNAL_SERVER_ERROR = 500,
-    BAD_REQUEST = 400
+    BAD_REQUEST = 400,
+    CREATE = 201,
+    DELETE = 204
   }

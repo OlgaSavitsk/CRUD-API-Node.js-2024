@@ -19,7 +19,7 @@ async function handler(ctx: AppContext) {
     } else {
       const newUser = await create(user);
       ctx.body = JSON.stringify(newUser);
-      ctx.res.statusCode = HTTP_STATUS.OK;
+      ctx.res.statusCode = HTTP_STATUS.CREATE;
     }
   } catch (error) {
     ctx.body = JSON.stringify({ message: "Server Error" });

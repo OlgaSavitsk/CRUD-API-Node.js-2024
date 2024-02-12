@@ -7,18 +7,19 @@ import { validate } from "uuid";
 async function handler(ctx: AppContext) {
   const id = ctx.req.url.split("/")[3];
   try {
-    if (!validate(id)) {
+    if (validate(id)) {
+      const user = await findById(id);
+      if (!user) {
+        ctx.body = JSON.stringify({ message: "User Not Found" });
+        ctx.res.statusCode = HTTP_STATUS.NOT_FOUND;
+      } else {
+        await remove(id);
+        ctx.body = JSON.stringify({ message: `User ${id} removed` });
+        ctx.res.statusCode = HTTP_STATUS.DELETE;
+      }
+    } else {
       ctx.body = JSON.stringify({ message: "ID must be in uuid format" });
       ctx.res.statusCode = HTTP_STATUS.BAD_REQUEST;
-    }
-    const user = await findById(id);
-    if (!user) {
-      ctx.body = JSON.stringify({ message: "User Not Found" });
-      ctx.res.statusCode = HTTP_STATUS.NOT_FOUND;
-    } else {
-      await remove(id);
-      ctx.res.statusCode = HTTP_STATUS.OK;
-      ctx.body = JSON.stringify({ message: `User ${id} removed` });
     }
   } catch (error) {
     ctx.body = JSON.stringify({ message: "Server Error" });
