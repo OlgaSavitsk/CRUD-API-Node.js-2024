@@ -2,22 +2,34 @@
   "compilerOptions": {
     "baseUrl": "src",
     "rootDir": ".",
-    "outDir": "dist",
-    "module": "NodeNext",
+    "outDir": "./dist",
+    "module": "ESNext",
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "declaration": true,
     "target": "ESNext",
-    "moduleResolution": "NodeNext",
-    "resolveJsonModule":true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "isolatedModules": false,
-    "strict": true,
-    "noEmit": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
     "noImplicitAny": true,
-    "useUnknownInCatchVariables": false,
-    "inlineSourceMap": true,
-    "paths": {"*": ["*"]}
+    "paths": {
+      "*": [
+        "*"
+      ]
+    }
   },
-  "include": ["src/**/*", "src/utils/users.json"],
-  "lib": ["es6"]
+  "include": [
+    "src/**/*",
+    "src/utils/users.json"
+  ],
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "esm": true,
+    "compilerOptions": {
+      "module": "ESNext"
+    }
+  },
+  "lib": [
+    "es6"
+  ]
 }
